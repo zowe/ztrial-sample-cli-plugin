@@ -16,11 +16,9 @@ describe("imperative config", () => {
     // Removed snapshot due to pluginHealthCheck path varies from machine to machine.
     it("config should match expected values", () => {
         const config = require("../src/imperative");
-        expect(config.name).toBe("zowe-cli-sample");
-        expect(config.pluginHealthCheck).toContain("healthCheck.Handler");
-        expect(config.pluginSummary).toBe("Zowe CLI sample plug-in");
-        expect(config.productDisplayName).toBe("Zowe CLI Sample Plug-in");
-        expect(config.rootCommandDescription).toContain("Welcome to the sample plug-in");
+        expect(config.name).toBe("ztrial-plugin");
+        expect(config.productDisplayName).toBe("zTrial CLI Plugin");
+        expect(config.rootCommandDescription).toContain("ztrial plugin to access ztrial api for CLI");
     });
 
 });

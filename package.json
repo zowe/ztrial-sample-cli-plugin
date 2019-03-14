@@ -1,5 +1,5 @@
 {
-  "name": "@brightside/zowe-cli-sample-plugin",
+  "name": "@brightside/ztrial-cli",
   "version": "1.0.0",
   "description": "A sample plugin for Zowe CLI :)",
   "repository": {
@@ -26,7 +26,10 @@
   "imperative": {
     "configurationModule": "lib/imperative.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
   "devDependencies": {
     "@brightside/core": ">=3.3.0-0",
     "@brightside/imperative": ">=3.1.0-0",
