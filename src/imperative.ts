@@ -13,11 +13,12 @@ import { IImperativeConfig } from "@brightside/imperative";
 
 const config: IImperativeConfig = {
     commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
+    pluginHealthCheck: __dirname + "/healthCheck.Handler",
     rootCommandDescription: "ztrial plugin to access ztrial api for CLI",
     envVariablePrefix: "ZTRIAL_CLI_PLUGIN",
     productDisplayName: "zTrial CLI Plugin",
     defaultHome: "~/.ztrial_cli_plugin",
-    name: "ztrial-plugin"
+    name: "zTrialPlugin"
 };
 
 export = config;

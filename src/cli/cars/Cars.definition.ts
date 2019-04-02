@@ -13,7 +13,7 @@ import { ICommandDefinition } from "@brightside/imperative";
 import { AccountDefinition } from "./Account/Account.definition";
 import { AllDefinition } from "./All/All.definition";
 
-export const CarsDefinition: ICommandDefinition = {
+const CarsDefinition: ICommandDefinition = {
     name: "cars",
     summary: "get some cars",
     description: "search the zTrial api for cars",
@@ -23,3 +23,5 @@ export const CarsDefinition: ICommandDefinition = {
         AllDefinition
     ]
 };
+
+export = CarsDefinition;

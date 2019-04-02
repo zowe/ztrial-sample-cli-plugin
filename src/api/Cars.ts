@@ -43,13 +43,13 @@ export class Cars {
         }
     }
 
-    private static calculateAverageHorsePower(cars: []){
+    private static calculateAverageHorsePower(cars: any){
         if (cars.length === 0){
             return new Error("No cars found");
         }
         const totalHorsePower: number = cars
-            .map((car: any) => car.horsepower)
-            .reduce((subtotal: number, x: number) => subtotal + x);
+            .map((car: any) => car.Horsepower)
+            .reduce((subtotal: number, horsepower: number) => subtotal + horsepower);
         return totalHorsePower / cars.length;
     }
 }
