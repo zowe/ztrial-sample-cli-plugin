@@ -15,8 +15,9 @@ import { Cars } from "../../../api/Cars";
 export default class DataSetsDiffHandler implements ICommandHandler {
     public async process(params: IHandlerParameters): Promise<void> {
         try {
-            const average = await Cars.getAverageHorsePowerForAccount(params.arguments.accountId);
-            params.response.console.log(average);
+            const carId = params.arguments.carId;
+            const response = await Cars.get(carId);
+            params.response.console.log(response);
         } catch (err) {
             params.response.console.log(err);
         }

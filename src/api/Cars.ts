@@ -11,21 +11,34 @@
 
 const rp = require("request-promise");
 
-const baseURI: string = "http://127.0.0.1:3000/";
+const baseURI: string = "http://127.0.0.1:19000";
 
 export class Cars {
 
-    public static async get() {
-        return rp(baseURI + "cars");
+    public static async get(id: number) {
+        return rp(`${baseURI}/cars/${id}`);
+    }
+
+    public static async getAll() {
+        return rp(`${baseURI}/cars`);
     }
 
     public static async getOwnedByAccount(id: number) {
-        return rp(baseURI + "accounts/" + id + "/cars");
+        return rp(`${baseURI}/accounts/${id}/cars`);
+    }
+
+    public static async postRelationship(carId: number, accountId: number) {
+        const options = {
+            method: "POST",
+            uri: `${baseURI}/cars/${carId}/accounts/${accountId}`,
+            json: true,
+        };
+        return rp(options);
     }
 
     public static async getAverageHorsePower() {
         try {
-            const response = await this.get();
+            const response = await this.getAll();
             const cars = JSON.parse(response);
             return this.calculateAverageHorsePower(cars);
         } catch (err) {

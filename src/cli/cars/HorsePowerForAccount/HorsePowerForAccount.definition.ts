@@ -11,12 +11,12 @@
 
 import { ICommandDefinition } from "@brightside/imperative";
 
-export const AccountDefinition: ICommandDefinition = {
+export const HorsePowerForAccountDefinition: ICommandDefinition = {
     name: "average-horse-power-for-account",
     summary: "Average horse power of cars owned by an account",
     description: "Get the average horse power of cars owned by an account, returns an error if the account owns no cars",
     type: "command",
-    handler: __dirname + "/Account.handler",
+    handler: __dirname + "/HorsePowerForAccount.handler",
     positionals: [
         {
             name: "accountId",

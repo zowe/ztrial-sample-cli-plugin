@@ -11,11 +11,19 @@
 
 import { ICommandDefinition } from "@brightside/imperative";
 
-export const AllDefinition: ICommandDefinition = {
-    name: "average-horse-power",
-    summary: "Average horse power of cars",
-    description: "Get the average horse power of all cars in the system",
+export const GetDefinition: ICommandDefinition = {
+    name: "get-car",
+    summary: "Get a single car by id",
+    description: "Get a single car by id from the api",
     type: "command",
-    handler: __dirname + "/all.handler"
+    handler: __dirname + "/Get.handler",
+    positionals: [
+        {
+            name: "carId",
+            description: "The car id",
+            type: "number",
+            required: true
+        }
+    ]
 };
 
