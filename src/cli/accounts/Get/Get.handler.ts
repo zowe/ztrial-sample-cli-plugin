@@ -10,12 +10,13 @@
 */
 
 import { ICommandHandler, IHandlerParameters } from "@brightside/imperative";
-import { Cars } from "../../../api/Cars";
+import { Accounts } from "../../../api/Accounts";
 
 export default class DataSetsDiffHandler implements ICommandHandler {
     public async process(params: IHandlerParameters): Promise<void> {
         try {
-            const response = await Cars.getAll();
+            const accountId = params.arguments.accountId;
+            const response = await Accounts.get(accountId);
             params.response.console.log(JSON.stringify(response.data));
         } catch (err) {
             params.response.console.log(err);

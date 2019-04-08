@@ -10,22 +10,23 @@
 */
 
 import { ICommandDefinition } from "@brightside/imperative";
-import { HorsePowerForAccountDefinition } from "./HorsePowerForAccount/HorsePowerForAccount.definition";
-import { HorsePowerDefinition } from "./HorsePower/HorsePower.definition";
 import { GetDefinition } from "./Get/Get.definition";
 import { GetAllDefinition } from "./GetAll/GetAll.definition";
+import { GetAccountCarsDefinition } from "./GetCars/GetCars.definition";
+import { GetAccountCarsCountDefinition } from "./GetCarsCount/GetAccountCarsCount.definition";
 
-const CarsDefinition: ICommandDefinition = {
-    name: "cars",
-    summary: "get some cars info",
-    description: "search the zTrial api for information cars about cars and their owners",
+
+const AccountsDefinition: ICommandDefinition = {
+    name: "accounts",
+    summary: "get some accounts info",
+    description: "search the zTrial api for information about accounts and their cars",
     type: "group",
     children: [
-        HorsePowerForAccountDefinition,
-        HorsePowerDefinition,
         GetDefinition,
         GetAllDefinition,
+        GetAccountCarsDefinition,
+        GetAccountCarsCountDefinition                   
     ]
 };
 
-export = CarsDefinition;
+export = AccountsDefinition;

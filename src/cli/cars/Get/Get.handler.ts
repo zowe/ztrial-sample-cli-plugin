@@ -17,7 +17,7 @@ export default class DataSetsDiffHandler implements ICommandHandler {
         try {
             const carId = params.arguments.carId;
             const response = await Cars.get(carId);
-            params.response.console.log(response);
+            params.response.console.log(JSON.stringify(response.data));
         } catch (err) {
             params.response.console.log(err);
         }

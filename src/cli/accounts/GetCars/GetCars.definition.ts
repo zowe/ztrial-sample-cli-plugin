@@ -11,24 +11,25 @@
 
 import { ICommandDefinition } from "@brightside/imperative";
 
-export const AddRelationshipDefinition: ICommandDefinition = {
-    name: "add-car-account-relationship",
-    summary: "Connect a car with an account",
-    description: "Relate a car and account together using their ID values",
+export const GetAccountCarsDefinition: ICommandDefinition = {
+    name: "get-cars",
+    summary: "Get all cars owned by an account",
+    description: "Get all the cars owned by an account, returns an error if the account owns no cars",
     type: "command",
-    handler: __dirname + "/AddRelationship.handler",
+    handler: __dirname + "/GetCars.handler",
     positionals: [
-        {
-            name: "carId",
-            description: "The car id",
-            type: "number",
-            required: true
-        },
         {
             name: "accountId",
             description: "The account id",
             type: "number",
             required: true
+        }
+    ],
+    options: [
+        {
+            name: "count",
+            description: "true if you want car count",
+            type: "boolean"        
         }
     ]
 };

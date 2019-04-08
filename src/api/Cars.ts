@@ -9,18 +9,26 @@
 *
 */
 
-const rp = require("request-promise");
+import * as https from "https";
+import axios from "axios";
 
-const baseURI: string = "http://127.0.0.1:19000";
+const rp = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false
+    }),
+    responseType: "json"
+  });
+
+const baseURI: string = "https://10.149.60.146:7554/api/v1/sample-node-api";
 
 export class Cars {
 
     public static async get(id: number) {
-        return rp(`${baseURI}/cars/${id}`);
+        return rp.get(`${baseURI}/cars/${id}`);
     }
 
     public static async getAll() {
-        return rp(`${baseURI}/cars`);
+        return rp.get(`${baseURI}/cars`);
     }
 
     public static async getOwnedByAccount(id: number) {
@@ -28,18 +36,14 @@ export class Cars {
     }
 
     public static async postRelationship(carId: number, accountId: number) {
-        const options = {
-            method: "POST",
-            uri: `${baseURI}/cars/${carId}/accounts/${accountId}`,
-            json: true,
-        };
-        return rp(options);
+
+        return rp.post(`${baseURI}/cars/${carId}/accounts/${accountId}`);
     }
 
     public static async getAverageHorsePower() {
         try {
             const response = await this.getAll();
-            const cars = JSON.parse(response);
+            const {data: cars} = response;
             return this.calculateAverageHorsePower(cars);
         } catch (err) {
             return err;
@@ -49,7 +53,7 @@ export class Cars {
     public static async getAverageHorsePowerForAccount(id: number) {
         try {
             const response = await this.getOwnedByAccount(id);
-            const cars = JSON.parse(response);
+            const {data: cars} = response;
             return this.calculateAverageHorsePower(cars);
         } catch (err) {
             return err;
