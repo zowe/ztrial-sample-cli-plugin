@@ -18,19 +18,21 @@ export const GetAccountCarsDefinition: ICommandDefinition = {
     type: "command",
     handler: __dirname + "/GetCars.handler",
     positionals: [
-        {
-            name: "accountId",
-            description: "The account id",
-            type: "number",
-            required: true
-        }
     ],
     options: [
         {
-            name: "count",
+            name: "accountId",
+            description: "The account id",
+            type: "stringOrEmpty",
+            required: true
+        },
+        // Missing feature
+        // uncomment new optional parameter option to get either count or list
+        /*{
+            name: "counts",
             description: "true if you want car count",
             type: "boolean"        
-        }
+        }*/
     ]
 };
 

@@ -8,6 +8,7 @@
     "no-var-requires": false,
     "trailing-comma": false,
     "no-trailing-whitespace": false,
+    "quotemark":false,
     "no-submodule-imports": [
       true
     ],
@@ -27,7 +28,16 @@
       2
     ],
     "no-consecutive-blank-lines": false,
-    "prefer-conditional-expression": false
+    "prefer-conditional-expression": false,
+    "whitespace": [
+      false,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "comment-format": [false, "check-space"]
   },
   "exclude": "test/",
   "type-check": true
