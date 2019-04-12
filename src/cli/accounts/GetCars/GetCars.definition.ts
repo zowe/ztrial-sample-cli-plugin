@@ -22,6 +22,7 @@ export const GetAccountCarsDefinition: ICommandDefinition = {
     options: [
         {
             name: "accountId",
+            aliases: ['acc'],
             description: "The account id",
             type: "stringOrEmpty",
             required: true
@@ -30,6 +31,7 @@ export const GetAccountCarsDefinition: ICommandDefinition = {
         // uncomment new optional parameter option to get either count or list
         /*{
             name: "counts",
+            aliases: ['c'],
             description: "true if you want car count",
             type: "boolean"        
         }*/
