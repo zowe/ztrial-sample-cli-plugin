@@ -13,7 +13,6 @@ import { ICommandDefinition } from "@brightside/imperative";
 import { GetDefinition } from "./Get/Get.definition";
 import { GetAllDefinition } from "./GetAll/GetAll.definition";
 import { GetAccountCarsDefinition } from "./GetCars/GetCars.definition";
-import { GetAccountCarsCountDefinition } from "./GetCarsCount/GetAccountCarsCount.definition";
 
 
 const AccountsDefinition: ICommandDefinition = {
@@ -24,8 +23,7 @@ const AccountsDefinition: ICommandDefinition = {
     children: [
         GetDefinition,
         GetAllDefinition,
-        GetAccountCarsDefinition,
-        GetAccountCarsCountDefinition                   
+        GetAccountCarsDefinition                   
     ]
 };
 
