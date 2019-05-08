@@ -19,7 +19,7 @@ const rp = axios.create({
     responseType: "json"
   });
 
-const baseURI: string = "https://10.149.60.171:7554/api/v1/sample-node-api/cli";
+const baseURI: string = "https://s0w1:7554/api/v1/sample-node-api/cli";
 
 export class Accounts {
 
