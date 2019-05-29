@@ -1,0 +1,6 @@
+I, Craig-Forrest hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: Craig.Forrest@ibm.com
+
+3fce11ce5dd3cec855d70d3c1293b15c91282ca2 add get, get all and add relationship commands and renamed folder names
+ce8395fcf4bc30ccbf43387f4a2f7ce8f4a53270 add healthcheck handler and resolved no name error
+674e210ef79f6743267537fb0556e29bb655070e added zowe ztrial-plugin cars average-horse-power and zowe ztrial-plugin cars average-horse-power-for-account commands
+4b864851d6893a638a0880b8b0fa8ff6650cb9de initial
