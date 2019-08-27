@@ -10,6 +10,7 @@
 */
 
 import { IImperativeConfig } from "@brightside/imperative";
+import { ZTrialSessionUtils } from "./cli/zTrialSessionUtils";
 
 const config: IImperativeConfig = {
     commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
@@ -18,8 +19,78 @@ const config: IImperativeConfig = {
     envVariablePrefix: "ZTRIAL_CLI_PLUGIN",
     productDisplayName: "zTrial CLI Plugin",
     defaultHome: "~/.ztrial_cli_plugin",
-    name: "zTrialPlugin"
+    name: "zTrialPlugin",
+    profiles: [
+        {
+          type: "zTrial",
+          schema: {
+            type: "object",
+            title: "CLI profile for zTrial",
+            description: "A zTrial profile is required to issue commands in the zTrial command group that interacts with zTrial. " +
+                "The zTrial profile contains your host, port, user name, and password for the IBM zTrial System Console interface",
+            properties: {
+              host: {
+                type: "string",
+                optionDefinition: {
+                  name: "host",
+                  aliases: ["H"],
+                  description: "The zTrial Rest server host name",
+                  type: "string",
+                  required: true,
+                }
+              },
+              port: {
+                type: "number",
+                optionDefinition: {
+                  type: "number",
+                  name: "port",
+                  aliases: ["P"],
+                  required: true,
+                  description: "Port number of your zTrial REST API server"
+                }
+              },
+              user: {
+                type: "string",
+                optionDefinition: {
+                  type: "string",
+                  name: "user",
+                  aliases: ["u"],
+                  required: true,
+                  description: "User name to authenticate to your zTrial REST API server"
+                },
+                secure: true
+              },
+              password: {
+                type: "string",
+                optionDefinition: {
+                  type: "string",
+                  name: "password",
+                  aliases: ["p"],
+                  required: true,
+                  implies: ["user"],
+                  description: "Password to authenticate to your zTrial REST API server"
+                },
+                secure: true
+              },
+              rejectUnauthorized: {
+                  type: "boolean",
+                  optionDefinition: ZTrialSessionUtils.ZTRIAL_OPTION_REJECT_UNAUTHORIZED
+              },
+              protocol: {
+                  type: "string",
+                  optionDefinition: ZTrialSessionUtils.ZTRIAL_OPTION_PROTOCOL
+              }
+            },
+            required: ["host", "port", "user", "password"],
+          },
+          createProfileExamples: [
+            {
+             options: "zTrial --host zTrial123 --port 1234 --user ibmuser --password myp4ss",
+             description: "Create an zTrial profile named 'zTrialprofile' to connect to zTrial at host zos123 and port 1234"
+            }
+          ]
+        }
+    ]
 };
 
 export = config;
-
