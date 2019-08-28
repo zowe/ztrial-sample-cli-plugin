@@ -26,8 +26,8 @@ const config: IImperativeConfig = {
           schema: {
             type: "object",
             title: "CLI profile for zTrial",
-            description: "A zTrial profile is required to issue commands in the zTrial command group that interacts with zTrial. " +
-                "The zTrial profile contains your host, port, user name, and password for the IBM zTrial System Console interface",
+            description: "A zTrial profile is required to issue commands in the zTrial command group that interacts with the zTrial API. " +
+                "The zTrial profile contains your host, port, user name, and password for the zTrial server",
             properties: {
               host: {
                 type: "string",

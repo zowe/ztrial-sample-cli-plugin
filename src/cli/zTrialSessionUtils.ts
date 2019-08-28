@@ -26,8 +26,7 @@ export class ZTrialSessionUtils {
     public static ZTRIAL_OPTION_HOST: ICommandOptionDefinition = {
         name: "host",
         aliases: ["H"],
-        description: "The host name used to access the IBM zTrial REST API. " +
-            "This might be the host name of the IBM zTrial web server, or the Zowe API Mediation Layer..",
+        description: "The host name used to access the zTrial REST API. ",
         type: "string",
         required: false,
         group: ZTrialSessionUtils.ZTRIAL_CONNECTION_OPTION_GROUP
@@ -39,8 +38,7 @@ export class ZTrialSessionUtils {
     public static ZTRIAL_OPTION_PORT: ICommandOptionDefinition = {
         name: "port",
         aliases: ["P"],
-        description: "The port number used to access the IBM zTrial REST API. " +
-            "This might be the port number of the IBM zTrial mqweb server, or the Zowe API Mediation Layer.",
+        description: "The port number used to access the zTrial REST API. ",
         type: "number",
         required: false,
         group: ZTrialSessionUtils.ZTRIAL_CONNECTION_OPTION_GROUP
