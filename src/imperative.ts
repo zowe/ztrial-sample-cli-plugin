@@ -19,7 +19,7 @@ const config: IImperativeConfig = {
     envVariablePrefix: "ZTRIAL_CLI_PLUGIN",
     productDisplayName: "zTrial CLI Plugin",
     defaultHome: "~/.ztrial_cli_plugin",
-    name: "zTrialPlugin",
+    name: "zTrialPlugin1",
     profiles: [
         {
           type: "zTrial",
