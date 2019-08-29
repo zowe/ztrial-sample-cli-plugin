@@ -12,7 +12,7 @@
 import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
 import { ZTrialResponse } from "../api/doc/ZTrialResponse";
 import { ZTrialSessionUtils } from "./zTrialSessionUtils";
-import { MQSession } from "../api/rest/ZTrialSession";
+import { ZTrialSession } from "../api/rest/ZTrialSession";
 
 /**
  * This class is used by the various mq handlers as the base class for their implementation.
@@ -22,23 +22,23 @@ export default abstract class MqBaseHandler implements ICommandHandler {
 
     /**
      * This will grab the mq profile and create a session before calling the subclass
-     * {@link MqBaseHandler#processWithSession} method.
+     * {@link ZTrialBaseHandler#processWithSession} method.
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent by imperative.
      *
      * @returns {Promise<ZTrialResponse>}
      */
     public async process(commandParameters: IHandlerParameters) {
-        const profile = commandParameters.profiles.get("mq", false) || {};
-        const session = MqSessionUtils.createBasicMqSessionFromArguments(commandParameters.arguments);
+        const profile = commandParameters.profiles.get("zTrial", false) || {};
+        const session = ZTrialSessionUtils.createBasiczTrialSessionFromArguments(commandParameters.arguments);
 
         const task: ITaskWithStatus = {
             percentComplete: 0,
-            statusMessage: "Running MQ Command",
+            statusMessage: "Running Command",
             stageName: TaskStage.IN_PROGRESS
         };
         if (commandParameters.arguments.cmd && commandParameters.arguments.qmgr) {
-            commandParameters.response.console.log("Running MQSC command: " +
+            commandParameters.response.console.log("Running command: " +
                 "'" + commandParameters.arguments.cmd + "'"  + " against " +
                      commandParameters.arguments.qmgr + "\n");
         }
@@ -49,12 +49,12 @@ export default abstract class MqBaseHandler implements ICommandHandler {
         // Print out the response
         if (response  && response.commandResponse && response.commandResponse[0]) {
             for (const resp of response.commandResponse) {
-                const mqResponse = resp.text;
-                const result = JSON.stringify(mqResponse);
-                const mqJSON = JSON.parse(result);
+                const zTrialResponse = resp.text;
+                const result = JSON.stringify(zTrialResponse);
+                const zTrialJSON = JSON.parse(result);
                 let start = true;
                 let success = false;
-                for (const line of mqJSON) {
+                for (const line of zTrialJSON) {
                     let modifiedLine = line;
                     if (start && modifiedLine.indexOf("CSQN205I") >= 0 ) {
                         success = modifiedLine.indexOf("RETURN=00000000") >= 0;
@@ -88,14 +88,14 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      * be used so that every class does not have to instantiate the session object.
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
-     * @param {MQSession} session The session object generated from the mq profile.
-     * @param {IProfile} mqProfile The mq profile that was loaded for the command.
+     * @param {ZTrialSession} session The session object generated from the mq profile.
+     * @param {IProfile} zTrialProfile The mq profile that was loaded for the command.
      *
      * @returns {Promise<ZTrialResponse>} The response from the underlying mq api call.
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: MQSession,
-        mqProfile: IProfile
+        session: ZTrialSession,
+        zTrialProfile: IProfile
     ): Promise<ZTrialResponse>;
 }

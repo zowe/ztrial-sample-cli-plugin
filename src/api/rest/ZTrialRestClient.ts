@@ -9,16 +9,16 @@
 *
 */
 
-import { IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
+import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
 
 /**
  * Wrapper for invoke MQ API through the RestClient to perform common error
  * handling and checking and resolve promises according to generic types
  * @export
- * @class MQRestClient
+ * @class ZTrialRestClient
  * @extends {RestClient}
  */
-export class MQRestClient extends RestClient {
+export class ZTrialRestClient extends RestClient {
 
     /**
      * Internal logger
@@ -40,19 +40,19 @@ export class MQRestClient extends RestClient {
      * Process an error encountered in the rest client
      * @param {IImperativeError} original - the original error automatically built by the abstract rest client
      * @returns {IImperativeError} - the processed error with details added
-     * @memberof MQRestClient
+     * @memberof ZTrialRestClient
      */
     protected processError(original: IImperativeError): IImperativeError {
-        original.msg = "MQ REST API Error:\n" + original.msg;
+        original.msg = "ZTrial REST API Error:\n" + original.msg;
         let details = original.causeErrors;
         try {
             const json = JSON.parse(details);
             // if we didn't get an error trying to parse json, check if there is a stack
             // on the JSON error and delete it
             if (json.stack != null) {
-                MQRestClient.log.error("An error was encountered in MQ with a stack." +
+                ZTrialRestClient.log.error("An error was encountered in ZTrial with a stack." +
                     " Here is the full error before deleting the stack:\n%s", JSON.stringify(json));
-                MQRestClient.log.error("The stack has been deleted from the error before displaying the error to the user");
+                ZTrialRestClient.log.error("The stack has been deleted from the error before displaying the error to the user");
                 delete json.stack; // remove the stack field
             }
 
@@ -60,7 +60,7 @@ export class MQRestClient extends RestClient {
             details = TextUtils.prettyJson(json, undefined, true);
         } catch (e) {
             // if there's an error, the causeErrors text is not json
-            MQRestClient.log.debug("Encountered an error trying to parse causeErrors as JSON  - causeErrors is likely not JSON format");
+            ZTrialRestClient.log.debug("Encountered an error trying to parse causeErrors as JSON  - causeErrors is likely not JSON format");
         }
         original.msg += "\n" + details; // add the data string which is the original error
         return original;

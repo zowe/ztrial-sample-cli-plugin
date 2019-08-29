@@ -9,4 +9,4 @@
 *
 */
 
-export * from "./MQRestClient";
+export * from "./rest/ZTrialRestClient";

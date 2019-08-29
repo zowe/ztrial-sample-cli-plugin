@@ -9,17 +9,17 @@
 *
 */
 
-import { MQRestClient } from "../MQRestClient";
-import { IImperativeError, Session } from "@zowe/imperative";
+import { ZTrialRestClient } from "../ZTrialRestClient";
+import { IImperativeError, Session } from "@brightside/imperative";
 
 describe("ZosmfRestClient tests", () => {
     it("should append the cmrf header to all requests", () => {
-        const zosmfRestClient = new MQRestClient(new Session({hostname: "dummy"}));
+        const zosmfRestClient = new ZTrialRestClient(new Session({hostname: "dummy"}));
         expect((zosmfRestClient as any).appendHeaders([])).toMatchSnapshot();
     });
 
     it("should delete stack from any zosmf errors before presenting them to users", () => {
-        const zosmfRestClient = new MQRestClient(new Session({hostname: "dummy"}));
+        const zosmfRestClient = new ZTrialRestClient(new Session({hostname: "dummy"}));
         const shouldNotDeleteMessage = "This should not be deleted";
         const shouldDeleteMessage = "This should be deleted";
         const error: IImperativeError = {

@@ -9,9 +9,9 @@
 *
 */
 
-import { Session, ISession } from "@zowe/imperative";
+import { Session, ISession } from "@brightside/imperative";
 
-export class MQSession extends Session {
+export class ZTrialSession extends Session {
 
   constructor(iSession: ISession) {
     super(iSession);
