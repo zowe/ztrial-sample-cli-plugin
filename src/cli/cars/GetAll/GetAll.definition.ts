@@ -16,6 +16,9 @@ export const GetAllDefinition: ICommandDefinition = {
     summary: "Get all cars",
     description: "Get all cars data stored in the api",
     type: "command",
-    handler: __dirname + "/GetAll.handler"
+    handler: __dirname + "/GetAll.handler",
+    profile: {
+        optional: ["zTrial"],
+    },
 };
 

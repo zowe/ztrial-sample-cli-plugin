@@ -30,10 +30,10 @@ interface ICommandResponses {
     text: string;
 }
 /**
- * The ZTrialResponse API response.
+ * The `IZTrialResponse API response.
  * @export
  */
-export interface ZTrialResponse {
+export interface IZTrialResponse {
 
     /**
      * The command response text.

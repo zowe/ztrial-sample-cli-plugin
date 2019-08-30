@@ -10,10 +10,10 @@
 */
 
 import { ImperativeExpect } from "@brightside/imperative";
-//import { MQMessages } from "./rest/constants/MQ.messages";
-//import { MQConstants } from "./rest/constants/MQ.constants";
-import { IHeaderContent } from "@zowe/cli";
-import { IMQResponse } from "./doc/IMQResponse";
+// import { MQMessages } from "./rest/constants/MQ.messages";
+// import { MQConstants } from "./rest/constants/MQ.constants";
+// import { IHeaderContent } from "@zowe/cli";
+import { IZTrialResponse } from "./doc/IZTrialResponse";
 import { ZTrialRestClient } from "./rest/ZTrialRestClient";
 import { posix } from "path";
 import { ZTrialSession } from "./rest/ZTrialSession";
@@ -34,21 +34,19 @@ export default class MQSCCommand {
      * @memberof Command
      */
     public static async qmgrAction(session: ZTrialSession, queueMgrName: string,
-                                   thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
+                                   thecommand: string, csrfHeader: boolean = true): Promise<IZTrialResponse> {
         // ImperativeExpect.toNotBeNullOrUndefined(queueMgrName, MQMessages.missingQueueManagerName.message);
         // ImperativeExpect.toNotBeEqual(queueMgrName, "", MQMessages.missingQueueManagerName.message);
         // ImperativeExpect.toNotBeNullOrUndefined(thecommand, MQMessages.missingCommand.message);
         // ImperativeExpect.toNotBeEqual(thecommand, "", MQMessages.missingCommand.message);
 
-        //const endpoint = posix.join(MQConstants.RESOURCE, MQConstants.RES_QUEUE_MANAGER_COMMAND, queueMgrName, MQConstants.RES_QUEUE_MANAGER_ACTION);
+        const endpoint = posix.join("cars");
 
         const payload: any = { type: "runCommand", parameters: { command: thecommand } };
 
-        const headers: IHeaderContent[] = (csrfHeader === true)
-            ? [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "true"}]
-            : [{"Content-Type": "application/json"}];
+        // const headers: IHeaderContent[] = [{"Content-Type": "application/json"}];
 
-        const content: IMQResponse = await ZTrialRestClient.postExpectJSON<IMQResponse>(session, endpoint, headers, payload);
+        const content: IZTrialResponse = await ZTrialRestClient.postExpectJSON<IZTrialResponse>(session, endpoint, [], payload);
 
         return content;
     }

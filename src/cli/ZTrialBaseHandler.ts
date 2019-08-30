@@ -10,7 +10,7 @@
 */
 
 import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { ZTrialResponse } from "../api/doc/ZTrialResponse";
+import { IZTrialResponse } from "../api/doc/IZTrialResponse";
 import { ZTrialSessionUtils } from "./zTrialSessionUtils";
 import { ZTrialSession } from "../api/rest/ZTrialSession";
 
@@ -18,7 +18,7 @@ import { ZTrialSession } from "../api/rest/ZTrialSession";
  * This class is used by the various mq handlers as the base class for their implementation.
  * All handlers should extend this class whenever possible
  */
-export default abstract class MqBaseHandler implements ICommandHandler {
+export default abstract class ZTrialBaseHandler implements ICommandHandler {
 
     /**
      * This will grab the mq profile and create a session before calling the subclass
@@ -26,7 +26,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent by imperative.
      *
-     * @returns {Promise<ZTrialResponse>}
+     * @returns {Promise<IZTrialResponse>}
      */
     public async process(commandParameters: IHandlerParameters) {
         const profile = commandParameters.profiles.get("zTrial", false) || {};
@@ -91,11 +91,11 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      * @param {ZTrialSession} session The session object generated from the mq profile.
      * @param {IProfile} zTrialProfile The mq profile that was loaded for the command.
      *
-     * @returns {Promise<ZTrialResponse>} The response from the underlying mq api call.
+     * @returns {Promise<IZTrialResponse>} The response from the underlying mq api call.
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
         session: ZTrialSession,
         zTrialProfile: IProfile
-    ): Promise<ZTrialResponse>;
+    ): Promise<IZTrialResponse>;
 }
