@@ -21,8 +21,8 @@
     "test": "npm run test:unit && npm run test:system",
     "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false",
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\"",
-    "rebuild":"npm run clean && npm run build",
-    "uninstallPlugin":"zowe plugins uninstall @brightside/ztrial-cli",
+    "rebuild": "npm run clean && npm run build",
+    "uninstallPlugin": "zowe plugins uninstall @brightside/ztrial-cli",
     "installPlugin": "npm run rebuild && zowe plugins install ."
   },
   "imperative": {
