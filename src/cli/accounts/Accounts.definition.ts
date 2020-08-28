@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 import { GetDefinition } from "./Get/Get.definition";
 import { GetAllDefinition } from "./GetAll/GetAll.definition";
 import { GetAccountCarsDefinition } from "./GetCars/GetCars.definition";

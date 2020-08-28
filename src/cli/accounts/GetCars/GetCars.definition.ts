@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 
 export const GetAccountCarsDefinition: ICommandDefinition = {
     name: "get-cars",

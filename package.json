@@ -1,5 +1,5 @@
 {
-  "name": "@brightside/ztrial-cli",
+  "name": "@zowe/ztrial-cli",
   "version": "1.0.0",
   "description": "A sample plugin for Zowe CLI :)",
   "repository": {
@@ -22,18 +22,22 @@
     "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false",
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\"",
     "rebuild": "npm run clean && npm run build",
-    "uninstallPlugin": "zowe plugins uninstall @brightside/ztrial-cli",
+    "uninstallPlugin": "zowe plugins uninstall @zowe/ztrial-cli",
     "installPlugin": "npm run rebuild && zowe plugins install ."
   },
   "imperative": {
     "configurationModule": "lib/imperative.js"
   },
+  "peerDependencies": {
+    "@zowe/cli": "^6.5.0",
+    "@zowe/imperative": "^4.5.0"
+  },
   "dependencies": {
     "axios": "^0.18.0"
   },
   "devDependencies": {
-    "@brightside/core": ">=3.3.0-0",
-    "@brightside/imperative": ">=3.1.0-0",
+    "@zowe/cli": "^6.5.0",
+    "@zowe/imperative": "^4.5.0",
     "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
     "@types/yargs": "8.0.2",
@@ -51,7 +55,7 @@
     "ts-node": "^3.2.0",
     "tslint": "^5.0.0",
     "typedoc": "^0.9.0",
-    "typescript": "3.2.2",
+    "typescript": "^3.7.4",
     "uuid": "^3.2.1"
   },
   "jest": {

@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandHandler, IHandlerParameters } from "@brightside/imperative";
+import { ICommandHandler, IHandlerParameters } from "@zowe/imperative";
 import { Cars } from "../../../api/Cars";
 
 export default class DataSetsDiffHandler implements ICommandHandler {

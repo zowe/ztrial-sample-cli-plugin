@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 import { HorsePowerForAccountDefinition } from "./HorsePowerForAccount/HorsePowerForAccount.definition";
 import { HorsePowerDefinition } from "./HorsePower/HorsePower.definition";
 import { GetDefinition } from "./Get/Get.definition";
