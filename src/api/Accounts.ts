@@ -35,6 +35,9 @@ export class Accounts {
         return rp(`${baseURI}/accounts/${id}/cars`);
     }
 
+    // Missing feature
+    // uncomment to add api extension to count cars
+    /* 
     public static async getCarsCount(id: number) {
         try {
             const response = await Accounts.getCarsByAccount(id);
@@ -44,5 +47,6 @@ export class Accounts {
             return err;
         }
     }
+    */
 
 }
