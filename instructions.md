@@ -43,6 +43,62 @@ zowe zTrialPlugin accounts
 
 
 
+open-cli
+
+
+Local 1
+serve-cli-api
+- in browser - 
+try few endpoints - 
+ - http://s0w1:17000/accounts
+ - http://s0w1:17000/accounts/1
+ - http://s0w1:17000/accounts/1/cars
+
+
+what plugins are already installed
+zowe plugins list
+What command groups are there?
+zowe
+
+- lets install our plugin
+
+ - install-cli
+
+ - zowe plugins list
+  new plugin
+  pluginName: @zowe/ztrial-cli 
+- zowe
+ new command group
+ zTrialPlugin   ztrial plugin to access ztrial api for CLI   
+
+ test-cli
+ you can explore api with self documenting help
+ - zowe zTrialPlugin ---this is to sub-groups
+ - zowe zTrialPlugin accounts - this to show nested subgroup
+
+  -  zowe zTrialPlugin accounts get-accounts
+  -  zowe zTrialPlugin accounts get-account 1
+  -  zowe zTrialPlugin accounts get-cars --accountId all
+  - zowe zowe zTrialPlugin accounts get-cars --accountId 3
+
+We can even extend basic api with new logi like hwe can count the cars
+  -  zowe zTrialPlugin accounts get-cars --accountId all --counts true; this will fail
+  - zowe zTrialPlugin accounts get-cars --help - this to show all the options we have available for this command
+
+uncomment code in src\api\Accounts.ts - extending API
+uncomment code in src\cli\accounts\GetCars\GetCars.definition.ts - adding new option in cli
+uncomment code in src\cli\accounts\GetCars\GetCars.handler.ts - adding handler for new option
+
+install-cli
+
+
+zowe zTrialPlugin accounts get-cars --help
+zowe zTrialPlugin accounts get-cars --accountId all --counts true
+
+
+
+
+
 
 
 
