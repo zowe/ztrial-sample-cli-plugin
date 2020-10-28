@@ -11,9 +11,9 @@
     "lib"
   ],
   "scripts": {
-    "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
+    "build": "tsc --pretty",
     "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
-    "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
+    "prebuild": "npm run clean && echo Using TypeScript && tsc --version",
     "clean": "rimraf lib",
     "watch": "tsc --pretty --watch",
     "prepublishOnly": "npm run build",
